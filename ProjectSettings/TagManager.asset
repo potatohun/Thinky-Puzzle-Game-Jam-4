@@ -6,6 +6,9 @@ TagManager:
   tags:
   - UnMoveableObject
   - Background
+  - MoveableObject
+  - Flag
+  - Flowable
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - Water
   - UI
   - MoveableObject
-  - 
-  - 
-  - 
+  - Background
+  - Player
+  - Flowable
   - 
   - 
   - 
@@ -46,6 +49,12 @@ TagManager:
   - name: Background
     uniqueID: 820872261
     locked: 0
-  - name: Object
+  - name: UnMoveableObject
     uniqueID: 2578044965
+    locked: 0
+  - name: MoveableObject
+    uniqueID: 2972699719
+    locked: 0
+  - name: Player
+    uniqueID: 1066550835
     locked: 0

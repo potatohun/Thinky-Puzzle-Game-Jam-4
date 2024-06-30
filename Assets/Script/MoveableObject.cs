@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
-public class PlayerMovement : MonoBehaviour
+public class MoveableObject : MonoBehaviour
 {
     [SerializeField]
     [Header("플레이어 움직임 가능")]
@@ -29,16 +27,6 @@ public class PlayerMovement : MonoBehaviour
         frontVector = Vector2.down;
     }
 
-    public void OnMove(InputValue value)
-    {
-        // InputValue에 따라 플레이어 이동
-        Vector2 input = value.Get<Vector2>();
-
-        if (input != null) // input의 정입력일때만 실행
-        {
-            Move(input);
-        }
-    }
     public void Move(Vector2 vector)
     {
         //이동 전 해당 방향으로 Rotation 변경
