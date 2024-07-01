@@ -18,7 +18,7 @@ public class Flowable: MonoBehaviour
 
         if (collision.gameObject.CompareTag("MoveableObject")) // MoveableObject 감지
         {
-            //collision.gameObject.GetComponent<MoveableObject>().Push(flowDirection); // 밀기
+            collision.gameObject.GetComponent<MoveableObject>().Move(flowDirection); // 밀기
         }
     }
 }

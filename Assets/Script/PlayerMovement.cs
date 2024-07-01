@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 else if (hit.collider.CompareTag("MoveableObject"))
                 {
                     // MoveableObject 밀기!
-                    hit.collider.GetComponent<MoveableObject>(); // push 함수 실행!
+                    hit.collider.GetComponent<MoveableObject>().Move(vector); // push 함수 실행!
                     Debug.Log("MoveableObject 감지!!");
                     canMove = false;
                 }
