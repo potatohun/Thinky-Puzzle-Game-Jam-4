@@ -13,10 +13,21 @@ public class MoveableObject : MonoBehaviour
     [Header("오브젝트 정면 방향")]
     private Vector2 frontVector;
 
-    private void Start()
+    [SerializeField]
+    [Header("초기화 위치 정면 방향")]
+    private Vector3 initialPosition;
+
+    private void Awake()
     {
         canMove = true;
         frontVector = Vector2.down;
+        initialPosition = this.transform.position;
+    }
+
+    public void ResetPosition()
+    {
+        // 위치 초기화
+        this.transform.position = initialPosition;
     }
 
     public void Move(Vector2 vector)
@@ -30,9 +41,9 @@ public class MoveableObject : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider != null)
+            if ((hit.collider != null)&&(hit.collider.gameObject!=this.gameObject))
             {
-                if (hit.collider.CompareTag("UnMoveableObject")) // 장애물 존재시 canMove = false
+                if (hit.collider.CompareTag("UnMoveableObject") || hit.collider.CompareTag("Flag")|| hit.collider.CompareTag("MoveableObject")) // 장애물 존재시 canMove = false
                 {
                     Debug.Log("UnMoveableObject 감지!!");
                     canMove = false;

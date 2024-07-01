@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour
 {
     public FadeInOut fadeInOut;
-    private void Update()
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) // Enter 입력 받을 시 게임시작!
+        fadeInOut.FadeIn();
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) // Enter 입력 받을 시 게임시작!
         {
             fadeInOut.FadeOut();
-            Invoke("LoadGameScene", 1.5f);
+            Invoke("LoadGameScene", 2f);
         }
     }
 

@@ -6,13 +6,6 @@ using UnityEngine;
 public class FadeInOut : MonoBehaviour
 {
     public Animator animatior;
-
-    private void Start()
-    {
-        animatior = GetComponent<Animator>();
-
-        animatior.SetTrigger("FadeIn");
-    }
     public void FadeIn() // 페이드인
     {
         animatior.SetTrigger("FadeIn");

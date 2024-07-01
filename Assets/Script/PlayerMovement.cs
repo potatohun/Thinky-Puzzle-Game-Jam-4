@@ -29,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
         frontVector = Vector2.down;
     }
 
+    public void ResetPosition(Vector3 vector3) 
+    {
+        // 플레이어 위치 초기화 및 회전 방향 초기화
+        transform.position = vector3;
+        frontVector = Vector2.down;
+        RotatePlayer(frontVector);
+    }
+
     public void OnMove(InputValue value)
     {
         // InputValue에 따라 플레이어 이동
