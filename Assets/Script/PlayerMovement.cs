@@ -15,6 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("플레이어 정면 방향")]
     private Vector2 frontVector;
 
+    [SerializeField]
+    [Header("플레이어 MOVE 효과음")]
+    private AudioSource moveSound;
+    [SerializeField]
+    [Header("플레이어 PUSH 효과음")]
+    private AudioSource pushSound;
+
     private struct Direction // 방향 정의
     {
         public static readonly Quaternion Up = Quaternion.Euler(0, 0, 180);
@@ -68,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
                 else if (hit.collider.CompareTag("MoveableObject"))
                 {
                     // MoveableObject 밀기!
+                    pushSound.Play();
                     hit.collider.GetComponent<MoveableObject>().Move(vector); // push 함수 실행!
                     Debug.Log("MoveableObject 감지!!");
                     canMove = false;
@@ -79,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //실제 이동
             transform.position = transform.position + new Vector3(vector.x, vector.y, 0);
+            moveSound.Play();
         }
     }
 

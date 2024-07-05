@@ -6,6 +6,10 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     [SerializeField]
+    [Header("맵 Number")]
+    private int mapNumber;
+
+    [SerializeField]
     [Header("플레이어 시작 위치")]
     private Vector3 playerStartPosition;
 
@@ -24,5 +28,10 @@ public class Map : MonoBehaviour
     public Vector3 ReturnplayerStartPosition()
     {
         return playerStartPosition;
+    }
+
+    public int ReturnMapNumber()
+    {
+        return mapNumber;
     }
 }

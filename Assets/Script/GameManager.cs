@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     private int currentMapIndex;
     private bool isClear;
 
+    [SerializeField]
+    [Header("클리어 효과음")]
+    private AudioSource clearSound;
 
     public Text levelText;
     public GameObject GameClearPanel;
@@ -67,25 +70,27 @@ public class GameManager : MonoBehaviour
     {
         maps[currentMapIndex].gameObject.SetActive(false); // 현재 맵 비활성화
 
-        // 실제 맵 초기화 부분
-        Player.ResetPosition(maps[currentMapIndex].ReturnplayerStartPosition()); // 플레이어 위치 초기화
-        maps[currentMapIndex].ResetMoveableObjects(); // MoveableObject 위치 초기화
-        levelText.text = "LEVEL " + (currentMapIndex + 1).ToString(); // 레벨 텍스트 변경
-
-        fadeInOut.FadeIn();
-        isPlayingFadeInOut = false;
-
         if (isClear) // 클리어 후 초기화 일 경우
         {
             currentMapIndex++; // 인덱스 증가
             isClear = false;
         }
 
+        // 실제 맵 초기화 부분
+        Player.ResetPosition(maps[currentMapIndex].ReturnplayerStartPosition()); // 플레이어 위치 초기화
+        maps[currentMapIndex].ResetMoveableObjects(); // MoveableObject 위치 초기화
+
+        fadeInOut.FadeIn();
+        isPlayingFadeInOut = false;
+
+        levelText.text = "LEVEL " + (maps[currentMapIndex].ReturnMapNumber()).ToString(); // 레벨 텍스트 변경
         maps[currentMapIndex].gameObject.SetActive(true); // 다음 맵 활성화 or 초기화 맵 활성화
     }
 
     public void ClearMap()
     {
+        clearSound.Play();
+
         isClear = true;
         isPlayingFadeInOut = true;
         fadeInOut.FadeOut(); // 페이드 아웃
@@ -97,10 +102,14 @@ public class GameManager : MonoBehaviour
         else // 없으면
         {
             // 최종 종료!
-            Player.gameObject.SetActive(false);
-            maps[currentMapIndex].gameObject.SetActive(false);
-            GameClearPanel.SetActive(true);
+            Invoke("ClearGame", 1.5f); // 페이드 인
         }
-        
+    }
+
+    void ClearGame()
+    {
+        Player.gameObject.SetActive(false);
+        maps[currentMapIndex].gameObject.SetActive(false);
+        GameClearPanel.SetActive(true);
     }
 }
