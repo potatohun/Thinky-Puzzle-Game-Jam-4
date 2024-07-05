@@ -3,3 +3,5 @@
 This jam has an (optional) theme which is: Extreme Sports.
 
 Therefore, this game is a puzzle game using kayaks.
+
+https://potato-hun.itch.io/whitewater-kayak
