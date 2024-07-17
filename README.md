@@ -1,4 +1,4 @@
-"Thinky Puzzle Jam 4" Submission Project
+<h1>"Thinky Puzzle Jam 4" Submission Project</h1>h1>
 
 This jam has an (optional) theme which is: Extreme Sports.
 
