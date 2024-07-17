@@ -1,8 +1,8 @@
 <h1>"Thinky Puzzle Jam 4" Submission Project</h1>
 
-This jam has an (optional) theme which is: Extreme Sports.
+(optional) Theme : Extreme Sports.
 
-Therefore, this game is a puzzle game using kayaks.
+Title : White Kayak
 
 Link to Play : https://potato-hun.itch.io/whitewater-kayak
 
